@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { Cart } from "../Cart";
 import CartProduct from "../components/CartProduct";
-import { ShoppingCart } from "phosphor-react";
 import "./navbar.css"
 import logo from "../assets/LogoFitCook.PNG";
 import { FiShoppingCart } from 'react-icons/fi';
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const cart = useContext(Cart);
@@ -37,31 +37,27 @@ function Navbar() {
     <div className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
-          <img src={logo} width={300}/>
+          <img src={logo} width={300} alt="Logo FitCook"/>
         </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+        
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
-          <button
+            <a className="navbar-brand" href="/store">
+              Tienda
+            </a>
+            <a className="navbar-brand" href="/contact">
+              Contacto
+            </a>
+            <button
               type="button"
               className="btn btn-dark"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
               style={{ backgroundColor: '#222222' }}
             ><FiShoppingCart size={27} />
-            {productsCount > 0 && (
-              <span className="numero-items">{productsCount}</span>
-            )}
+              {productsCount > 0 && (
+                <span className="numero-items">{productsCount}</span>
+              )}
             </button>
 
             <div
@@ -101,7 +97,7 @@ function Navbar() {
                             .toFixed(2)
                             .toString()
                             .replace(".", ",")
-                            .replace(/\,00/, "")}
+                            .replace(/,00/, "")}
                           €
                         </h4>
                       </div>
