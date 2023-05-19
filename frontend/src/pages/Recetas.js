@@ -1,82 +1,80 @@
-import React, { useState, useEffect } from "react";
 import "./recetas.css";
+import React, { useState, useEffect } from 'react';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import { FiSearch } from "react-icons/fi";
 
 const Recetas = () => {
-  const [searchInput, setSearchInput] = useState("");
-  const [meals, setMeals] = useState([]);
-  const [showRecipe, setShowRecipe] = useState(false);
-  const [selectedMeal, setSelectedMeal] = useState(null);
+  const [searchInput, setSearchInput] = useState('');
+  const [mealList, setMealList] = useState([]);
+  const [mealDetails, setMealDetails] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
-  const handleSearchInput = (event) => {
-    setSearchInput(event.target.value);
+  useEffect(() => {
+    getRandomRecipes();
+  }, []);
+
+  const getRandomRecipes = () => {
+    fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+      .then(response => response.json())
+      .then(data => {
+        if (data.meals) {
+          setMealList(data.meals.slice(0, 12));
+        } else {
+          setMealList([]);
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching random recipes:', error);
+        setMealList([]);
+      });
   };
 
-  const getRandomMeals = async () => {
-    const randomMeals = [];
-    for (let i = 0; i < 12; i++) {
-      const response = await fetch(
-        "https://www.themealdb.com/api/json/v1/1/random.php"
-      );
-      const data = await response.json();
-      const meal = data.meals[0];
-      randomMeals.push(meal);
-    }
-    return randomMeals;
+  const handleSearch = () => {
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInput}`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.meals) {
+          setMealList(data.meals);
+        } else {
+          setMealList([]);
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching meal list:', error);
+        setMealList([]);
+      });
   };
 
-  const getMealList = () => {
-    if (searchInput.trim() !== "") {
-      fetch(
-        `https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInput}`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.meals) {
-            setMeals(data.meals);
-          } else {
-            setMeals([]);
-          }
-        });
-    } else {
-      getRandomMeals()
-        .then((randomMeals) => {
-          setMeals(randomMeals);
-        })
-        .catch((error) => {
-          console.log("Error fetching random meals:", error);
-          setMeals([]);
-        });
-    }
-  };
-
-  const getMealRecipe = (mealId) => {
+  const openRecipeModal = mealId => {
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
-      .then((response) => response.json())
-      .then((data) => {
-        const meal = data.meals[0];
-        setSelectedMeal(meal);
-        setShowRecipe(true);
+      .then(response => response.json())
+      .then(data => {
+        if (data.meals && data.meals.length > 0) {
+          setMealDetails(data.meals[0]);
+          setShowModal(true);
+        } else {
+          setMealDetails(null);
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching meal details:', error);
+        setMealDetails(null);
       });
   };
 
   const closeRecipeModal = () => {
-    setShowRecipe(false);
-    setSelectedMeal(null);
+    setMealDetails(null);
+    setShowModal(false);
   };
 
-  useEffect(() => {
-    getMealList();
-  }, []);
-
   return (
-    <div className="recetasContainer">
+    <div className="container">
       <div className="meal-wrapper">
         <div className="meal-search">
           <h2 className="title">Encuentra nuevas ideas para recetas</h2>
           <blockquote>
-            "La cocina no la puedes separar de la persona que la hace, ni del lugar donde la consumes."
-            <br />
+            "La cocina no la puedes separar de la persona que la hace, ni del lugar donde la consumes."<br />
             <cite>- Alain Ducasse</cite>
           </blockquote>
 
@@ -86,13 +84,9 @@ const Recetas = () => {
               className="search-control"
               placeholder="Escribe un ingrediente"
               value={searchInput}
-              onChange={handleSearchInput}
+              onChange={e => setSearchInput(e.target.value)}
             />
-            <button
-              type="submit"
-              className="search-btn btn"
-              onClick={getMealList}
-            >
+            <button type="button" className="search-btn btn" onClick={handleSearch}>
               <FiSearch />
             </button>
           </div>
@@ -101,72 +95,55 @@ const Recetas = () => {
         <div className="meal-result">
           <h2 className="title">Tus resultados:</h2>
           <div id="meal">
-            {meals.length > 0 ? (
-              meals.map((meal) => (
-                <div className="meal-item" key={meal.idMeal}>
+            {mealList.length > 0 ? (
+              mealList.map(meal => (
+                <div className="meal-item" key={meal.idMeal} data-id={meal.idMeal}>
                   <div className="meal-img">
                     <img src={meal.strMealThumb} alt="food" />
                   </div>
                   <div className="meal-name">
                     <h3>{meal.strMeal}</h3>
-                    <button
-                      className="recipe-btn"
-                      onClick={() => getMealRecipe(meal.idMeal)}
-                    >
+                    <button className="recipe-btn" onClick={() => openRecipeModal(meal.idMeal)}>
                       Ver Receta
                     </button>
                   </div>
                 </div>
               ))
             ) : (
-              <p>No hemos encontrado ninguna receta 😪</p>
+              <p>No hemos encontrado la receta.</p>
             )}
           </div>
         </div>
 
-        {showRecipe && selectedMeal && (
-          <div className="modal">
-            <div className="modal-content">
-              <button
-                type="button"
-                className="close-btn"
-                onClick={closeRecipeModal}
-              >
-                <i className="fas fa-times"></i>
-              </button>
-              <h2>{selectedMeal.strMeal}</h2>
-              <p className="recipe-category">{selectedMeal.strCategory}</p>
-              <div className="recipe-instruct">
-                <h3>Instrucciones:</h3>
-                <p>{selectedMeal.strInstructions}</p>
-              </div>
-              <div className="recipe-ingredients">
-                <h3>Ingredientes:</h3>
-                <ul>
-                  {Object.entries(selectedMeal)
-                    .filter(
-                      ([key, value]) =>
-                        key.startsWith("strIngredient") && value
-                    )
-                    .map(([key, value]) => (
-                      <li key={key}>{value}</li>
-                    ))}
-                </ul>
-              </div>
-              {selectedMeal.strYoutube && (
+        <Modal show={showModal} onHide={closeRecipeModal}>
+          {mealDetails && (
+            <>
+              <Modal.Header closeButton>
+                <Modal.Title>{mealDetails.strMeal}</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <p>{mealDetails.strCategory}</p>
+                <div className="recipe-instruct">
+                  <h3>Instrucciones:</h3>
+                  <p>{mealDetails.strInstructions}</p>
+                </div>
+                <div className="recipe-meal-img">
+                  <img src={mealDetails.strMealThumb} alt="" />
+                </div>
                 <div className="recipe-link">
-                  <a
-                    href={selectedMeal.strYoutube}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Ver Video
+                  <a href={mealDetails.strYoutube} target="_blank" rel="noopener noreferrer">
+                    Watch Video
                   </a>
                 </div>
-              )}
-            </div>
-          </div>
-        )}
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={closeRecipeModal}>
+                  Volver
+                </Button>
+              </Modal.Footer>
+            </>
+          )}
+        </Modal>
       </div>
     </div>
   );
