@@ -7,6 +7,7 @@ import Store from "./pages/Store";
 import Success from "./pages/Success";
 import Cancel from "./pages/Cancel";
 import Home from "./pages/Home";
+import Recetas from "./pages/Recetas";
 import Asesorias from "./pages/Asesorias";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
@@ -23,6 +24,7 @@ function App() {
             <Routes>
               <Route path="/*" element={<NotFound />} />
               <Route path="/" element={<Home />} />
+              <Route path="/recetas" element={<Recetas />} />
               <Route path="/asesorias" element={<Asesorias />} />
               <Route path="/aboutus" element={<AboutUs />} />
               <Route path="/store" element={<Store />} />
