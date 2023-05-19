@@ -1,0 +1,34 @@
+.planButton{
+    display : flex ;
+    position : relative ;
+    width : auto ;
+    height : auto;
+    text-decoration : none ;
+    perspective : auto;
+    background : linear-gradient( rgba(255,255,255,.1) 0% , rgba(255,255,255,0) 30%  ,rgba(255,255,255,0) 70% , rgba(255,255,255,.1)) ;
+    box-shadow : 0 0 32px rgba(0,0,0,1) ;
+}
+
+.buttonPlanButton__wrapper{
+    position : relative ;
+    width : 100% ;
+    height : 100% ;
+    background : linear-gradient( rgba(255,255,255,.4) 0% , rgba(255,255,255,0) 30%  ,rgba(255,255,255,0) 70% , rgba(255,255,255,.2)) ;
+    
+    perspective : auto ;
+}
+.buttonPlanButton__text{
+    position : relative ;
+    display : flex ;
+    justify-content : center ;
+    align-items : center ;
+    width : 100% ;
+    height : 100% ;
+    font-size : 20px ;
+    letter-spacing : 3px ;
+    font-weight: lighter;
+    color : #222222 ;
+    transition : all ease-in-out 1s ;
+}
+
+

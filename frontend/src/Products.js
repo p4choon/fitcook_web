@@ -11,6 +11,10 @@ import product10 from "./assets/products/10.jpg";
 import product11 from "./assets/products/11.jpg";
 import product12 from "./assets/products/12.jpg";
 
+import plan1 from "./assets/plans/1.jpg";
+import plan2 from "./assets/plans/2.jpg";
+import plan3 from "./assets/plans/3.jpg";
+
 const arrayProducts = [
   {
     id: "price_1N8PF8JqMocsCimAMf80uWGc",
@@ -84,7 +88,29 @@ const arrayProducts = [
     price: 3.80,
     image: product12,
   },
+  {
+    id: "price_1N8RA7JqMocsCimAVispRNkE",
+    name: "SERVICIO DE NUTRICIÓN",
+    description: "El plan dispone de un servicio 100% personalizado, contacto y feedback diario. Adaptado a los objetivos de cada persona. Habrá revisiones cada mes por vídeo y contacto semanal por correo. Tenemos en cuenta las alergias y preferencias del cliente.",
+    price: 150,
+    image: plan1,
+  },
+  {
+    id: "price_1N8R2VJqMocsCimALVD15tY9",
+    name: "SERVICIO DE ENTRENAMIENTO",
+    description: "El plan dispone de un servicio 100% personalizado, contacto y feedback diario. Está adaptado a los objetivos de cada persona. Habrá revisiones cada mes por vídeo y contacto semanal por correo.",
+    price: 150,
+    image: plan2,
+  },
+  {
+    id: "price_1N8QoHJqMocsCimATEVeYRfC",
+    name: "SERVICIO DE ENTRENAMIENTO + NUTRICIÓN",
+    description: "Servicio 100% personalizado, además de contacto y feedback diario. Completamente personalizado. Contacto 24/7 por WhatsApp. Revisiones semanales por vídeo. Modificaciones siempre que hagan falta. Adaptado a cualquier tipo de objetivo.",
+    price: 250,
+    image: plan3,
+  },
 ];
+
 
 function getProductData(id) {
   let productData = arrayProducts.find((product) => product.id === id);

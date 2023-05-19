@@ -28,6 +28,7 @@
 .social-icons {
   display: flex;
   padding-right: 2em;
+  animation:scale-up-horizontal-center 0.7s} @keyframes scale-up-horizontal-center{0%{transform:scaleX(.2)}100%{transform:scaleX(1)}
 }
 
 .social-icon {

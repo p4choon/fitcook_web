@@ -1,10 +1,9 @@
-import { useContext } from "react";
-import Link from "react-router-dom";
+import React, { useContext, useState } from "react";
 import { Cart } from "../Cart";
 import CartProduct from "../components/CartProduct";
-import "./navbar.css"
+import "./navbar.css";
 import logo from "../assets/LogoFitCook.PNG";
-import { FiShoppingCart } from 'react-icons/fi';
+import { FiShoppingCart } from "react-icons/fi";
 
 function Navbar() {
   const cart = useContext(Cart);
@@ -12,6 +11,11 @@ function Navbar() {
     (sum, product) => sum + product.quantity,
     0
   );
+  const [currentRoute, setCurrentRoute] = useState("");
+
+  const handleRouteChange = (route) => {
+    setCurrentRoute(route);
+  };
 
   const checkout = async () => {
     await fetch("http://localhost:4000/checkout", {
@@ -36,22 +40,52 @@ function Navbar() {
   return (
     <div className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">
-          <img src={logo} width={300} alt="Logo FitCook"/>
+        <a
+          className={`navbar-brand ${
+            currentRoute === "/" ? "active" : ""
+          }`}
+          href="/"
+          onClick={() => handleRouteChange("/")}
+        >
+          <img src={logo} width={300} alt="Logo FitCook" />
         </a>
-        
+
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
-            <a className="navbar-brand" href="/asesorias">
+            <a
+              className={`nav-link ${
+                currentRoute === "/asesorias" ? "active" : ""
+              }`}
+              href="/asesorias"
+              onClick={() => handleRouteChange("/asesorias")}
+            >
               Asesorías
             </a>
-            <a className="navbar-brand" href="/store">
+            <a
+              className={`nav-link ${
+                currentRoute === "/store" ? "active" : ""
+              }`}
+              href="/store"
+              onClick={() => handleRouteChange("/store")}
+            >
               Tienda
             </a>
-            <a className="navbar-brand" href="/aboutus">
+            <a
+              className={`nav-link ${
+                currentRoute === "/aboutus" ? "active" : ""
+              }`}
+              href="/aboutus"
+              onClick={() => handleRouteChange("/aboutus")}
+            >
               Sobre Nosotros
             </a>
-            <a className="navbar-brand" href="/contact">
+            <a
+              className={`nav-link ${
+                currentRoute === "/contact" ? "active" : ""
+              }`}
+              href="/contact"
+              onClick={() => handleRouteChange("/contact")}
+            >
               Contacto
             </a>
             <button
@@ -59,13 +93,14 @@ function Navbar() {
               className="btn btn-dark"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
-              style={{ backgroundColor: '#222222' }}
-            ><FiShoppingCart size={27} />
+              style={{ backgroundColor: "#222222" }}
+            >
+              <FiShoppingCart size={27} />
               {productsCount > 0 && (
                 <span className="numero-items">{productsCount}</span>
               )}
             </button>
-
+            
             <div
               className="modal fade"
               id="exampleModal"
@@ -117,7 +152,12 @@ function Navbar() {
                         type="button"
                         className="btn btn-success"
                         onClick={checkout}
-                        style={{ backgroundColor: '#FFD700', fontWeight: 'bold', color:'#222222', borderColor:'#222222' }}
+                        style={{
+                          backgroundColor: "#FFD700",
+                          fontWeight: "bold",
+                          color: "#222222",
+                          borderColor: "#222222",
+                        }}
                       >
                         Comprar
                       </button>
@@ -137,7 +177,7 @@ function Navbar() {
           </ul>
         </div>
       </div>
-    </div>
+    </div>    
   );
 }
 
