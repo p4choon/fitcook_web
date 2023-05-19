@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
-import contactBanner from "../assets/contactBanner.jpg";
+import contactBanner from "../assets/contact/contactBanner.jpg";
 import "./contact.css";
 
 function Contact() {
@@ -30,7 +30,7 @@ function Contact() {
     <div className="contact">
       <div
         className="leftSide imageLeft"
-        style={{ backgroundImage: `url(${contactBanner})` }}
+        style={{ backgroundImage: `url(${contactBanner})`, height: '91.7vh'}}
       ></div>
       <div className="rightSide">
         <h1 className="contactTitleH4">Contáctanos</h1>

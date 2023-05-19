@@ -1,3 +1,11 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .shopTitle {
   margin-top: 100px;
   text-align: center;

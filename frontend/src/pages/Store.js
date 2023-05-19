@@ -4,7 +4,7 @@ import "../components/product.css";
 
 function Store() {
   return (
-    <div>
+    <div className="container">
       <h1 className="shopTitle">Tienda de Suplementación</h1>
       <div className="row g-4 mt-2 mb-4">
         {arrayProducts.map((product, index) => (

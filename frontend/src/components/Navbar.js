@@ -4,7 +4,6 @@ import CartProduct from "../components/CartProduct";
 import "./navbar.css"
 import logo from "../assets/LogoFitCook.PNG";
 import { FiShoppingCart } from 'react-icons/fi';
-import { Link } from "react-router-dom";
 
 function Navbar() {
   const cart = useContext(Cart);
@@ -44,6 +43,9 @@ function Navbar() {
           <ul className="navbar-nav ms-auto">
             <a className="navbar-brand" href="/store">
               Tienda
+            </a>
+            <a className="navbar-brand" href="/aboutus">
+              Sobre Nosotros
             </a>
             <a className="navbar-brand" href="/contact">
               Contacto

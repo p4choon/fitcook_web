@@ -19,7 +19,7 @@ function CartProduct(props) {
         Cantidad: {quantity}
       </h6>
       <p>
-      {(quantity * productData.price).toFixed(2).toString().replace(".", ",").replace(/\,00/,'')}€
+      {(quantity * productData.price).toFixed(2).toString().replace(".", ",").replace(/,00/,'')}€
       </p>
       <button className="btn btn-warning" style={{ backgroundColor: 'red', fontWeight: 'bold' }} onClick={() => cart.deleteItem(id)}>
         Quitar del carrito <FiMinusCircle size={24}/>

@@ -14,7 +14,7 @@ function Product(props) {
         <p>
           <b>{product.name}</b>
         </p>
-        <p> {product.price.toLocaleString('es-ES')}€</p>
+        <p> {product.price.toFixed(2).toString().replace(".", ",").replace(/,00/,'')}€</p>
         {quantity > 0 ? (
           <div className="row">
             <div className="row m-auto">
