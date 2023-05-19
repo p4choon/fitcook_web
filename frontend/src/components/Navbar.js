@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import Link from "react-router-dom";
 import { Cart } from "../Cart";
 import CartProduct from "../components/CartProduct";
 import "./navbar.css"
@@ -41,6 +42,9 @@ function Navbar() {
         
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
+            <a className="navbar-brand" href="/asesorias">
+              Asesorías
+            </a>
             <a className="navbar-brand" href="/store">
               Tienda
             </a>

@@ -1,98 +1,133 @@
 .home {
-    width: 144.2%;
-    height: 103vh;
-    display: flex;
-    justify-content: center;
-    align-items: left;
-    flex-direction: column;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-}
-
-.headerContainer {
-  width: auto;
-  margin-left: 50px;
-}
-
-.headerContainer h1 {
+  width: 100%;
+  height: 100vh;
+  display: flex;
   justify-content: center;
-  align-items: center;
-  font-size: 90px;
-  height: 60px;
-  font-weight: 50;
-  color: black;
+  align-items: flex-end;
+  flex-direction: column;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-.headerContainer p {
-  padding: 0;
-  font-size: 40px;
-  font-weight: lighter;
-  color: black;
+/* Color Variables */
+.color-codepen {
+  background: #222222;
+  color: #FBC237;
 }
 
-.headerContainer button {
-  color: black;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  justify-content: center;
-  background-color: #121619;
-  height: 50px;
-  width: 180px;
-  color: white;
-  text-decoration: none;
-  font-size: 20px;
-}
-
-.headerContainer button:hover {
-  background-color: #07090a;
-  cursor: pointer;
-  transition: 0.3s ease-in;
-}
-
-@media only screen and (max-width: 650px) {
-  .home {
-    justify-content: center;
-    align-items: center;
-  }
-  .headerContainer h1,
-  .headerContainer p {
-  }
-
+/* Media Queries */
+@media only screen and (max-width: 768px) {
   .headerContainer {
-    margin-left: 0px;
-    border-radius: 10px;
-    padding: 10px;
-    width: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: #121619;
-    color: white;
+    display: none;
   }
+}
 
-  .headerContainer h1 {
-    font-size: 40px;
-    height: 30px;
-    color: white;
-  }
+/* Social Icons */
+.social-icons {
+  display: flex;
+  padding-right: 2em;
+}
 
-  .headerContainer p {
-    font-size: 30px;
-    color: white;
-  }
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size: 2.5rem;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
 
-  .headerContainer button {
-    background-color: white;
-    color: #121619;
-    margin-bottom: 30px;
-  }
+.social-icon:hover {
+  color: #fff;
+}
 
-  .headerContainer button:hover {
-    background-color: rgb(225, 225, 225);
-    color: #121619;
-  }
+.social-icon:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, -150%);
+}
+
+.social-icon:active {
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5) inset;
+}
+
+.social-icon--linkedin {
+  background: #222222;
+  color: #FBC237;
+}
+
+.social-icon--twitter {
+  background: #222222;
+  color: #FBC237;
+}
+
+.social-icon--codepen {
+  background: #222222;
+  color: #FBC237;
+}
+
+.social-icon--facebook {
+  background: #222222;
+  color: #FBC237;
+}
+
+.social-icon--instagram {
+  background: #222222;
+  color: #FBC237;
+}
+
+.social-icon--youtube {
+  background: #222222;
+  color: #FBC237;
+}
+
+.social-icon--github {
+  background: #222222;
+  color: #FBC237;
+}
+
+.social-icon i {
+  position: relative;
+  top: 1px;
+}
+
+/* Tooltips */
+.tooltip {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  padding: 0.8rem 1rem;
+  border-radius: 40px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  opacity: 0;
+  pointer-events: none;
+  text-transform: uppercase;
+  transform: translate(-50%, -100%);
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.tooltip:after {
+  display: block;
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  content: "";
+  border: solid;
+  border-width: 10px 10px 0 10px;
+  border-color: transparent;
+  transform: translate(-50%, 100%);
 }
