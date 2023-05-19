@@ -8,7 +8,6 @@ function Plan(props) {
   const cart = useContext(Cart);
   const quantity = cart.getQuantity(product.id);
   const [showDescription, setShowDescription] = useState(false);
-  const valor = "";
 
   const handleClick = () => {
     setShowDescription(!showDescription);
@@ -73,7 +72,7 @@ function Plan(props) {
                 onClick={() => cart.deleteItem(product.id)}
                 style={{ backgroundColor: '#FFFFFF', fontWeight: 'bold', color:'red', borderColor:'#222222' }}
               >
-                Quitar product <FiTrash2 size={20} color="red"/>
+                Quitar asesoría <FiTrash2 size={20} color="red"/>
               </button>
             </div>
           </div>

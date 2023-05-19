@@ -1,34 +1,134 @@
-.planButton{
-    display : flex ;
-    position : relative ;
-    width : auto ;
-    height : auto;
-    text-decoration : none ;
-    perspective : auto;
-    background : linear-gradient( rgba(255,255,255,.1) 0% , rgba(255,255,255,0) 30%  ,rgba(255,255,255,0) 70% , rgba(255,255,255,.1)) ;
-    box-shadow : 0 0 32px rgba(0,0,0,1) ;
+/* Estilos generales */
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.buttonPlanButton__wrapper{
-    position : relative ;
-    width : 100% ;
-    height : 100% ;
-    background : linear-gradient( rgba(255,255,255,.4) 0% , rgba(255,255,255,0) 30%  ,rgba(255,255,255,0) 70% , rgba(255,255,255,.2)) ;
-    
-    perspective : auto ;
-}
-.buttonPlanButton__text{
-    position : relative ;
-    display : flex ;
-    justify-content : center ;
-    align-items : center ;
-    width : 100% ;
-    height : 100% ;
-    font-size : 20px ;
-    letter-spacing : 3px ;
-    font-weight: lighter;
-    color : #222222 ;
-    transition : all ease-in-out 1s ;
+.product img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
 }
 
+.description {
+  text-align: center;
+  margin-top: 10px;
+}
 
+.planButton {
+  display: flex;
+  position: relative;
+  width: auto;
+  height: auto;
+  text-decoration: none;
+  perspective: auto;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0) 70%,
+    rgba(255, 255, 255, 0.1)
+  );
+  box-shadow: 0 0 32px rgba(0, 0, 0, 1);
+  margin-top: 10px;
+}
+
+.buttonPlanButton__wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0) 70%,
+    rgba(255, 255, 255, 0.2)
+  );
+  perspective: auto;
+}
+
+.buttonPlanButton__text {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+  letter-spacing: 3px;
+  font-weight: lighter;
+  color: #222222;
+  transition: all ease-in-out 1s;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 767px) {
+  .product {
+    margin-bottom: 22em;
+    width: 80%;
+  }
+
+  .product img {
+    max-width: max-content;
+  }
+
+  .description {
+    margin-top: 5px;
+  }
+
+  .planButton {
+    margin-top: 5px;
+  }
+
+  .buttonPlanButton__text {
+    font-size: 16px;
+  }
+}
+
+/* Estilos para tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .product {
+    margin-bottom: 15px;
+    width: 80%;
+  }
+
+  .product img {
+    max-width: 250px;
+  }
+
+  .description {
+    margin-top: 5px;
+  }
+
+  .planButton {
+    margin-top: 5px;
+  }
+
+  .buttonPlanButton__text {
+    font-size: 18px;
+  }
+}
+
+/* Estilos para ordenador */
+@media (min-width: 1024px) and (max-width: 2000px) {
+    .product {
+        margin-bottom: 15px;
+    }
+
+    .product img {
+        height: auto;
+        width: auto;
+    }
+
+    .description {
+        margin-top: 5px;
+    }
+
+    .planButton {
+        margin-top: 5px;
+    }
+
+    .buttonPlanButton__text {
+        font-size: 18px;
+    }
+}
