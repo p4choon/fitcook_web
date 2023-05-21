@@ -15,36 +15,48 @@ const Recetas = () => {
   }, []);
 
   const getRandomRecipes = () => {
-    fetch('https://www.themealdb.com/api/json/v1/1/random.php')
-      .then(response => response.json())
-      .then(data => {
-        if (data.meals) {
-          setMealList(data.meals.slice(0, 12));
-        } else {
-          setMealList([]);
-        }
+    const requests = Array.from({ length: 12 }, () =>
+      fetch('https://www.themealdb.com/api/json/v1/1/random.php').then(response => response.json())
+    );
+  
+    Promise.all(requests)
+      .then(results => {
+        const meals = results.map(result => result.meals[0]);
+        setMealList(meals);
       })
       .catch(error => {
         console.error('Error fetching random recipes:', error);
         setMealList([]);
       });
   };
+  
+
+  let searchTimeout = null;
 
   const handleSearch = () => {
-    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInput}`)
-      .then(response => response.json())
-      .then(data => {
-        if (data.meals) {
-          setMealList(data.meals);
-        } else {
-          setMealList([]);
-        }
-      })
-      .catch(error => {
-        console.error('Error fetching meal list:', error);
-        setMealList([]);
-      });
+    clearTimeout(searchTimeout);
+
+    if (searchInput.trim() !== '') {
+      searchTimeout = setTimeout(() => {
+        fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInput}`)
+          .then(response => response.json())
+          .then(data => {
+            if (data.meals) {
+              setMealList(data.meals);
+            } else {
+              setMealList([]);
+            }
+          })
+          .catch(error => {
+            console.error('Error fetching meal list:', error);
+            setMealList([]);
+          });
+      }, 500);
+    } else {
+      getRandomRecipes();
+    }
   };
+  
 
   const openRecipeModal = mealId => {
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
@@ -79,13 +91,14 @@ const Recetas = () => {
           </blockquote>
 
           <div className="meal-search-box">
-            <input
-              type="text"
-              className="search-control"
-              placeholder="Escribe un ingrediente"
-              value={searchInput}
-              onChange={e => setSearchInput(e.target.value)}
-            />
+          <input
+            type="text"
+            className="search-control"
+            placeholder="Escribe un ingrediente"
+            value={searchInput}
+            onChange={e => setSearchInput(e.target.value)}
+            onKeyUp={handleSearch}
+          />
             <button type="button" className="search-btn btn" onClick={handleSearch}>
               <FiSearch />
             </button>
@@ -116,34 +129,53 @@ const Recetas = () => {
         </div>
 
         <Modal show={showModal} onHide={closeRecipeModal}>
-          {mealDetails && (
-            <>
-              <Modal.Header closeButton>
-                <Modal.Title>{mealDetails.strMeal}</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                <p>{mealDetails.strCategory}</p>
-                <div className="recipe-instruct">
-                  <h3>Instrucciones:</h3>
-                  <p>{mealDetails.strInstructions}</p>
-                </div>
-                <div className="recipe-meal-img">
-                  <img src={mealDetails.strMealThumb} alt="" />
-                </div>
-                <div className="recipe-link">
-                  <a href={mealDetails.strYoutube} target="_blank" rel="noopener noreferrer">
-                    Watch Video
-                  </a>
-                </div>
-              </Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={closeRecipeModal}>
-                  Volver
-                </Button>
-              </Modal.Footer>
-            </>
-          )}
-        </Modal>
+        {mealDetails && (
+          <>
+            <Modal.Header closeButton>
+              <Modal.Title><img src={mealDetails.strMealThumb} alt="" style={{height:'20%', width:'20%'}} /> {mealDetails.strMeal}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <p>{mealDetails.strCategory}</p>
+              <div className="recipe-ingredients">
+                <h3>Ingredientes:</h3>
+                <ul>
+                  {Array.from({ length: 20 }, (_, index) => index + 1).map(index => {
+                    const ingredient = mealDetails[`strIngredient${index}`];
+                    const measure = mealDetails[`strMeasure${index}`];
+                    if (ingredient && ingredient.trim() !== '') {
+                      return (
+                        <li key={index}>
+                          {measure} {ingredient}
+                        </li>
+                      );
+                    }
+                    return null;
+                  })}
+                </ul>
+              </div>
+              <div className="recipe-instruct">
+                <h3>Instrucciones:</h3>
+                {mealDetails.strInstructions.split('\n').map((instruction, index) => (
+                  <p key={index}>{instruction}</p>
+                ))}
+              </div>
+              <div className="recipe-meal-img">
+                <img src={mealDetails.strMealThumb} alt="" />
+              </div>
+              <div className="recipe-link">
+                <a href={mealDetails.strYoutube} target="_blank" rel="noopener noreferrer">
+                  <span>Ver en Youtube</span>
+                </a>
+              </div>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={closeRecipeModal}>
+                Volver
+              </Button>
+            </Modal.Footer>
+          </>
+        )}
+      </Modal>
       </div>
     </div>
   );
