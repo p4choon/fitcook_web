@@ -8,6 +8,7 @@ import Success from "./pages/Success";
 import Cancel from "./pages/Cancel";
 import Home from "./pages/Home";
 import Recetas from "./pages/Recetas";
+import CreaTuDieta from "./pages/CreaTuDieta";
 import CalculadoraIMC from "./pages/CalculadoraIMC";
 import Asesorias from "./pages/Asesorias";
 import AboutUs from "./pages/AboutUs";
@@ -26,6 +27,7 @@ function App() {
               <Route path="/*" element={<NotFound />} />
               <Route path="/" element={<Home />} />
               <Route path="/recetas" element={<Recetas />} />
+              <Route path="/creatudieta" element={<CreaTuDieta />} />
               <Route path="/calculadoraimc" element={<CalculadoraIMC />} />
               <Route path="/asesorias" element={<Asesorias />} />
               <Route path="/aboutus" element={<AboutUs />} />

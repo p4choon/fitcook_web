@@ -63,6 +63,15 @@ function Navbar() {
             </a>
             <a
               className={`nav-link ${
+                currentRoute === "/creatudieta" ? "active" : ""
+              }`}
+              href="/creatudieta"
+              onClick={() => handleRouteChange("/creatudieta")}
+            >
+              Crea tu Dieta
+            </a>
+            <a
+              className={`nav-link ${
                 currentRoute === "/calculadoraimc" ? "active" : ""
               }`}
               href="/calculadoraimc"

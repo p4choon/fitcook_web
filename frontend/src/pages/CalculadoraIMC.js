@@ -31,6 +31,18 @@ const CalculadoraIMC = () => {
     }
   };
 
+  const getIMCCategory = (imc) => {
+    if (imc < 18.5) {
+      return 'Bajo peso';
+    } else if (imc >= 18.5 && imc < 25) {
+      return 'Peso saludable';
+    } else if (imc >= 25 && imc < 30) {
+      return 'Sobrepeso';
+    } else {
+      return 'Obesidad';
+    }
+  };
+
   return (
     <div className="imc-calculator">
       <h2>Calculadora de IMC</h2>
@@ -74,18 +86,6 @@ const CalculadoraIMC = () => {
       )}
     </div>
   );
-};
-
-const getIMCCategory = (imc) => {
-  if (imc < 18.5) {
-    return 'Bajo peso';
-  } else if (imc >= 18.5 && imc < 25) {
-    return 'Peso saludable';
-  } else if (imc >= 25 && imc < 30) {
-    return 'Sobrepeso';
-  } else {
-    return 'Obesidad';
-  }
 };
 
 export default CalculadoraIMC;
