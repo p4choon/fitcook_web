@@ -30,6 +30,10 @@
   align-items: center;
 }
 
+.col-md-4{
+  padding-bottom: 3em;
+}
+
 .product img {
   width: 400px;
 }
@@ -58,4 +62,30 @@
   background-color: rgb(19, 19, 19);
   color: white;
   cursor: pointer;
+}
+
+.btnEliminar {
+  margin-top: 1em;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color: white;
+  color: #222222;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  border: 1px solid #222222;
+}
+
+.btnEliminar:hover {
+  background-color: #222222;
+  color: white;
+}
+
+.btnEliminar:active {
+  background-color: red;
+  transform: translateY(1px);
 }

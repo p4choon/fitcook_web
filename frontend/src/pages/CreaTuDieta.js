@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState} from 'react';
 import './crea-tu-dieta.css';
 import { VictoryPie, VictoryLabel } from 'victory';
 

@@ -4,8 +4,15 @@ import CartProduct from "../components/CartProduct";
 import "./navbar.css";
 import logo from "../assets/LogoFitCook.PNG";
 import { FiShoppingCart } from "react-icons/fi";
+import { FaBars } from 'react-icons/fa';
 
 function Navbar() {
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+
+  const handleMobileNavToggle = () => {
+    setIsMobileNavOpen(!isMobileNavOpen);
+  };
+
   const cart = useContext(Cart);
   const productsCount = cart.items.reduce(
     (sum, product) => sum + product.quantity,
@@ -49,8 +56,11 @@ function Navbar() {
         >
           <img src={logo} width={300} alt="Logo FitCook" />
         </a>
-
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div className={`navbar-toggle ${isMobileNavOpen ? 'active' : ''}`} onClick={handleMobileNavToggle}>
+          <FaBars />
+        </div>
+        
+        <ul className={`navbar-menu ${isMobileNavOpen ? 'active' : ''}`}>
           <ul className="navbar-nav ms-auto">
             <a
               className={`nav-link ${
@@ -87,6 +97,15 @@ function Navbar() {
               onClick={() => handleRouteChange("/asesorias")}
             >
               Asesorías
+            </a>
+            <a
+              className={`nav-link ${
+                currentRoute === "/comunidad" ? "active" : ""
+              }`}
+              href="/comunidad"
+              onClick={() => handleRouteChange("/comunidad")}
+            >
+              Comunidad
             </a>
             <a
               className={`nav-link ${
@@ -202,7 +221,7 @@ function Navbar() {
               </div>
             </div>
           </ul>
-        </div>
+        </ul>
       </div>
     </div>    
   );

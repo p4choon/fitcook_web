@@ -37,10 +37,9 @@ function Product(props) {
                 </button>
               </div>
               <button
-                type="button"
-                className="btn btn-danger w-75 mt-4 m-auto"
+                type="btn button"
+                className="btnEliminar"
                 onClick={() => cart.deleteItem(product.id)}
-                style={{ backgroundColor: '#FFFFFF', fontWeight: 'bold', color:'red', borderColor:'#222222' }}
               >
                 Quitar producto <FiTrash2 size={20} color="red"/>
               </button>

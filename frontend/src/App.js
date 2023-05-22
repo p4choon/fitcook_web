@@ -11,6 +11,7 @@ import Recetas from "./pages/Recetas";
 import CreaTuDieta from "./pages/CreaTuDieta";
 import CalculadoraIMC from "./pages/CalculadoraIMC";
 import Asesorias from "./pages/Asesorias";
+import Comunidad from "./pages/Comunidad";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -21,7 +22,6 @@ function App() {
     <div>
       <CartProvider>
         <Navbar />
-        
           <BrowserRouter>
             <Routes>
               <Route path="/*" element={<NotFound />} />
@@ -30,6 +30,7 @@ function App() {
               <Route path="/creatudieta" element={<CreaTuDieta />} />
               <Route path="/calculadoraimc" element={<CalculadoraIMC />} />
               <Route path="/asesorias" element={<Asesorias />} />
+              <Route path="/comunidad" element={<Comunidad />} />
               <Route path="/aboutus" element={<AboutUs />} />
               <Route path="/store" element={<Store />} />
               <Route path="/contact" element={<Contact />} />
