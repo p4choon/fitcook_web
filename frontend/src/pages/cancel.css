@@ -1,0 +1,86 @@
+.cancel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background-color: #f8f8f8;
+  animation: fade-in 0.5s ease-in-out;
+}
+
+.cancel-content {
+  text-align: center;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: slide-up 0.5s ease-in-out;
+}
+
+.cancel-icon {
+  font-size: 4rem;
+  color: #222222;
+}
+
+.cancel-title {
+  font-size: 2.5rem;
+  margin-top: 1.5rem;
+  opacity: 0;
+  animation: fade-in-up 0.5s ease-in-out 0.3s forwards;
+}
+
+.cancel-message {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  color: #555555;
+  opacity: 0;
+  animation: fade-in-up 0.5s ease-in-out 0.6s forwards;
+}
+
+.cancel-button {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.8rem 2rem;
+  background-color: #222222;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  opacity: 0;
+  animation: fade-in-up 0.5s ease-in-out 0.9s forwards;
+}
+
+.cancel-button:hover {
+  background-color: #FFD700;
+  color: #222222;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
