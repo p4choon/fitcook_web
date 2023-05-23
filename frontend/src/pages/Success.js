@@ -25,7 +25,7 @@ function Success() {
             contact@fitcook.com
           </a>
         </p>
-        <a href="/">
+        <a href="./">
           <button type="button" width="300px" className="btnSuccess">
             Continua Navegando
           </button>

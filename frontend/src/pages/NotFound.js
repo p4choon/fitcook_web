@@ -324,7 +324,7 @@ function NotFound() {
   </div>
 </div>
 <h1 className="notFoundTitle">No hemos encontrado la página que estabas buscando😢</h1>
-<center><a href="/" className='btn NFbtn' style={{ textDecoration: 'none', fontWeight: 'bold', color:'#E1E6E9', textAlign:'center', backgroundColor:'#222222' }}><h2>Volver<FiCornerDownLeft/></h2></a></center>
+<center><a href="./" className='btn NFbtn' style={{ textDecoration: 'none', fontWeight: 'bold', color:'#E1E6E9', textAlign:'center', backgroundColor:'#222222' }}><h2>Volver<FiCornerDownLeft/></h2></a></center>
   </div>
   )
 }

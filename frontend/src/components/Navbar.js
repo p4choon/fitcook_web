@@ -51,7 +51,7 @@ function Navbar() {
           className={`navbar-brand ${
             currentRoute === "/" ? "active" : ""
           }`}
-          href="/"
+          href="./"
           onClick={() => handleRouteChange("/")}
         >
           <img src={logo} width={300} alt="Logo FitCook" />
@@ -66,7 +66,7 @@ function Navbar() {
               className={`nav-link ${
                 currentRoute === "/recetas" ? "active" : ""
               }`}
-              href="/recetas"
+              href="./recetas"
               onClick={() => handleRouteChange("/recetas")}
             >
               Recetas
@@ -75,7 +75,7 @@ function Navbar() {
               className={`nav-link ${
                 currentRoute === "/creatudieta" ? "active" : ""
               }`}
-              href="/creatudieta"
+              href="./creatudieta"
               onClick={() => handleRouteChange("/creatudieta")}
             >
               Crea tu Dieta
@@ -84,7 +84,7 @@ function Navbar() {
               className={`nav-link ${
                 currentRoute === "/calculadoraimc" ? "active" : ""
               }`}
-              href="/calculadoraimc"
+              href="./calculadoraimc"
               onClick={() => handleRouteChange("/calculadoraimc")}
             >
               Calculadora IMC
@@ -93,7 +93,7 @@ function Navbar() {
               className={`nav-link ${
                 currentRoute === "/asesorias" ? "active" : ""
               }`}
-              href="/asesorias"
+              href="./asesorias"
               onClick={() => handleRouteChange("/asesorias")}
             >
               Asesorías
@@ -102,7 +102,7 @@ function Navbar() {
               className={`nav-link ${
                 currentRoute === "/comunidad" ? "active" : ""
               }`}
-              href="/comunidad"
+              href="./comunidad"
               onClick={() => handleRouteChange("/comunidad")}
             >
               Comunidad
@@ -111,7 +111,7 @@ function Navbar() {
               className={`nav-link ${
                 currentRoute === "/store" ? "active" : ""
               }`}
-              href="/store"
+              href="./store"
               onClick={() => handleRouteChange("/store")}
             >
               Tienda
@@ -120,7 +120,7 @@ function Navbar() {
               className={`nav-link ${
                 currentRoute === "/aboutus" ? "active" : ""
               }`}
-              href="/aboutus"
+              href="./aboutus"
               onClick={() => handleRouteChange("/aboutus")}
             >
               Sobre Nosotros
@@ -129,7 +129,7 @@ function Navbar() {
               className={`nav-link ${
                 currentRoute === "/contact" ? "active" : ""
               }`}
-              href="/contact"
+              href="./contact"
               onClick={() => handleRouteChange("/contact")}
             >
               Contacto
@@ -138,7 +138,7 @@ function Navbar() {
               className={`nav-link ${
                 currentRoute === "/login" ? "active" : ""
               }`}
-              href="/login"
+              href="./login"
               onClick={() => handleRouteChange("/login")}
             >
               <FiUser size={25}/>
