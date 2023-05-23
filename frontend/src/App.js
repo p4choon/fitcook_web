@@ -14,6 +14,7 @@ import Asesorias from "./pages/Asesorias";
 import Comunidad from "./pages/Comunidad";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
+import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import CartProvider from "./Cart";
 
@@ -34,6 +35,7 @@ function App() {
               <Route path="/aboutus" element={<AboutUs />} />
               <Route path="/store" element={<Store />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/login" element={<Login />} />
               <Route path="/success" element={<Success />} />
               <Route path="/cancel" element={<Cancel />} />
             </Routes>

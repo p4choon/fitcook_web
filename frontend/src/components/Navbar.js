@@ -3,7 +3,7 @@ import { Cart } from "../Cart";
 import CartProduct from "../components/CartProduct";
 import "./navbar.css";
 import logo from "../assets/LogoFitCook.PNG";
-import { FiShoppingCart } from "react-icons/fi";
+import { FiShoppingCart, FiUser } from "react-icons/fi";
 import { FaBars } from 'react-icons/fa';
 
 function Navbar() {
@@ -133,6 +133,15 @@ function Navbar() {
               onClick={() => handleRouteChange("/contact")}
             >
               Contacto
+            </a>
+            <a
+              className={`nav-link ${
+                currentRoute === "/login" ? "active" : ""
+              }`}
+              href="/login"
+              onClick={() => handleRouteChange("/login")}
+            >
+              <FiUser size={25}/>
             </a>
             <button
               type="button"

@@ -1,6 +1,5 @@
-import { useEffect } from 'react'
 import Chat from '../components/comunidad/Chat'
-import User from '../components/comunidad/User'
+import User from '../components/comunidad/UserComunidad'
 import './comunidad.css'
 
 function Comunidad() {

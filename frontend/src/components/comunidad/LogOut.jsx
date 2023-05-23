@@ -1,15 +1,16 @@
+import React from 'react';
 import { auth } from '../../firebase';
 import { FiLogOut } from "react-icons/fi";
 
 const LogOut = () => {
-    const signOut = () => {
-        signOut(auth);
-    }
+    const handleLogOut = () => {
+        auth.signOut();
+    };
     
     return ( 
         <>
             <button 
-                onClick={() => auth.signOut()}
+                onClick={handleLogOut}
                 className='btn-login btn-logout'
                 style={{backgroundColor:'#222222'}}
             >
