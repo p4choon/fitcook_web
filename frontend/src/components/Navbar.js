@@ -5,6 +5,7 @@ import "./navbar.css";
 import logo from "../assets/LogoFitCook.PNG";
 import { FiShoppingCart, FiUser } from "react-icons/fi";
 import { FaBars } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
 
 function Navbar() {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
@@ -25,26 +26,30 @@ function Navbar() {
   };
 
   const checkout = async () => {
-    await fetch("http://localhost:4000/checkout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ items: cart.items }),
-    })
-      .then((response) => {
-        console.log(response);
-        return response.json();
-      })
-      .then((response) => {
-        console.log(response.url);
-        if (response.url) {
-          window.location.assign(response.url);
-        }
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ items: cart.items }),
       });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log(responseData.url);
+        if (responseData.url) {
+          window.location.assign(responseData.url);
+        }
+      } else {
+        console.log("Error in checkout request:", response.status);
+      }
+    } catch (error) {
+      console.log("Error in checkout request:", error);
+    }
   };
 
-  return (
+  return (<>
     <div className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
         <a
@@ -62,6 +67,24 @@ function Navbar() {
         
         <ul className={`navbar-menu ${isMobileNavOpen ? 'active' : ''}`}>
           <ul className="navbar-nav ms-auto">
+            <a
+              className={`nav-link ${
+                currentRoute === "/rutinas" ? "active" : ""
+              }`}
+              href="./rutinas"
+              onClick={() => handleRouteChange("/rutinas")}
+            >
+              Rutinas
+            </a>
+            <a
+              className={`nav-link ${
+                currentRoute === "/ejercicios" ? "active" : ""
+              }`}
+              href="./ejercicios"
+              onClick={() => handleRouteChange("/ejercicios")}
+            >
+              Ejercicios
+            </a>
             <a
               className={`nav-link ${
                 currentRoute === "/recetas" ? "active" : ""
@@ -232,7 +255,7 @@ function Navbar() {
           </ul>
         </ul>
       </div>
-    </div>    
+    </div></>
   );
 }
 

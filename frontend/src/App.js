@@ -7,7 +7,16 @@ import Store from "./pages/Store";
 import Success from "./pages/Success";
 import Cancel from "./pages/Cancel";
 import Home from "./pages/Home";
-import Rutinas from "./pages/Rutinas";
+
+import Rutinas from "./pages/rutinas/Rutinas";
+import RutinasAdd from "./pages/rutinas/RutinasAdd";
+import RutinasList from "./pages/rutinas/RutinasList";
+import RutinaEdit from "./pages/rutinas/RutinaEdit";
+
+import Ejercicios from "./pages/ejercicios/Ejercicios";
+import EjerciciosAdd from "./pages/ejercicios/EjerciciosAdd";
+import EjerciciosEdit from "./pages/ejercicios/EjerciciosEdit";
+
 import Recetas from "./pages/Recetas";
 import CreaTuDieta from "./pages/CreaTuDieta";
 import CalculadoraIMC from "./pages/CalculadoraIMC";
@@ -28,7 +37,13 @@ function App() {
             <Routes>
               <Route path="/*" element={<NotFound />} />
               <Route path="/" element={<Home />} />
-              <Route path="/rutinas" element={<Rutinas />} />
+              <Route path="/rutinas" element={<Rutinas/>} />
+              <Route path="/rutinas/add" element={<RutinasAdd/> } />
+              <Route path="/rutinas/show/:id" element={<RutinasList/>} />
+              <Route path="/rutinas/edit/:id" element={<RutinaEdit/>} />
+              <Route path="/ejercicios" element={<Ejercicios/>} />
+              <Route path="/ejercicios/add" element={<EjerciciosAdd/> } />
+              <Route path="/ejercicios/edit/:id" element={<EjerciciosEdit/>} />
               <Route path="/recetas" element={<Recetas />} />
               <Route path="/creatudieta" element={<CreaTuDieta />} />
               <Route path="/calculadoraimc" element={<CalculadoraIMC />} />
