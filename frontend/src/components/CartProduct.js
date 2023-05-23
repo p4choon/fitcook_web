@@ -12,16 +12,16 @@ function CartProduct(props) {
 
   return (
     <div>
-      <h5 className="" style={{color: "purple"}}>
+      <h5 className="productTitle">
         {productData.name}
       </h5>
-      <h6>
+      <h6 style={{color: "productPrice"}} >
         Cantidad: {quantity}
       </h6>
       <p>
       {(quantity * productData.price).toFixed(2).toString().replace(".", ",").replace(/,00/,'')}€
       </p>
-      <button className="btn btn-warning" style={{ backgroundColor: 'red', fontWeight: 'bold' }} onClick={() => cart.deleteItem(id)}>
+      <button className="btn btn-warning borrarProduct" onClick={() => cart.deleteItem(id)}>
         Quitar del carrito <FiMinusCircle size={24}/>
       </button>
       <hr />

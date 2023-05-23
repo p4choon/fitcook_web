@@ -93,3 +93,28 @@
     display: flex;
   }
 }
+
+/* MODAL */
+.modal-open h5{
+  color: #FFD700 !important;
+  background: rgb(111,109,105);
+  background: linear-gradient(64deg, rgba(111,109,105,1) 14%, rgba(62,60,55,1) 42%, rgba(0,0,0,1) 97%);
+  width: 100%;
+}
+
+.modal-open h6,p{
+  color: #222222 !important;
+  width: 100%;
+}
+
+.modal-open button{
+  border: 1px solid black;
+}
+
+.modal-body p{
+  font-weight: bold !important;
+}
+
+.modal-open .borrarProduct{
+  color: red !important;
+}

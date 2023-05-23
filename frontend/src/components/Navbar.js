@@ -198,7 +198,7 @@ function Navbar() {
                         </h4>
                       </div>
                     ) : (
-                      <h4 className="text-danger">El carrito está vacío</h4>
+                      <h4 className="text-danger">Tu carrito está vacío 😪</h4>
                     )}
                   </div>
                   <div className="modal-footer">
