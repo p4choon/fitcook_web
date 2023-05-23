@@ -7,6 +7,7 @@ import Store from "./pages/Store";
 import Success from "./pages/Success";
 import Cancel from "./pages/Cancel";
 import Home from "./pages/Home";
+import Rutinas from "./pages/Rutinas";
 import Recetas from "./pages/Recetas";
 import CreaTuDieta from "./pages/CreaTuDieta";
 import CalculadoraIMC from "./pages/CalculadoraIMC";
@@ -27,6 +28,7 @@ function App() {
             <Routes>
               <Route path="/*" element={<NotFound />} />
               <Route path="/" element={<Home />} />
+              <Route path="/rutinas" element={<Rutinas />} />
               <Route path="/recetas" element={<Recetas />} />
               <Route path="/creatudieta" element={<CreaTuDieta />} />
               <Route path="/calculadoraimc" element={<CalculadoraIMC />} />

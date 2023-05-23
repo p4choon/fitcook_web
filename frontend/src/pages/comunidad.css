@@ -17,6 +17,11 @@
   overflow: auto;
   
 }
+
+.message p.text{
+  color:white !important;
+}
+
 .btn-login{
   background-color: rgb(205, 202, 202) !important;
   color: #222222 !important;
