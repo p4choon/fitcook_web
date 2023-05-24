@@ -27,7 +27,7 @@ function Navbar() {
 
   const checkout = async () => {
     try {
-      const response = await fetch("http://equip01.insjoaquimmir.cat/api/checkout", {
+      const response = await fetch("https://equip01.insjoaquimmir.cat/api/checkout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
