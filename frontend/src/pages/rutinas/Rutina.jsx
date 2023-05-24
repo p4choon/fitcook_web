@@ -7,10 +7,10 @@ const Rutina = ({ v }) => {
   const deleteRutina = (id, d) => {
     d.preventDefault();
 
-    let confirma = confirm("Estas  segur?");
+    let confirma = window.confirm("¿Estás seguro?");
 
     if (confirma) {
-        fetch("http://127.0.0.1:8000/api/routines/" + id, {
+        fetch("http://equip01.insjoaquimmir.cat/api/routines/" + id, {
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
@@ -23,7 +23,7 @@ const Rutina = ({ v }) => {
             if (resposta.exercise) {  
             console.log("OK");
             // provoca el refrescat del component i la reexecució de useEffect
-            setRefresca(true);
+            // setRefresca(true);
             }
         });
     }

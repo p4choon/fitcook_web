@@ -19,7 +19,7 @@ const EjercicioEdit = () => {
       
 
         console.log("Inicio lectura");
-        const data = await fetch ("http://127.0.0.1:8000/api/exercises",{
+        const data = await fetch ("http://equip01.insjoaquimmir.cat/api/exercises",{
                   headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
@@ -60,11 +60,11 @@ const EjercicioEdit = () => {
       setError("");
       if (e.target.type && e.target.type==="file")
       {
-        console.log(event.target.files[0].name) 
+        console.log(e.target.files[0].name) 
         setFormulari({
 
           ...formulari,
-          [e.target.name] : event.target.files[0] 
+          [e.target.name] : e.target.files[0] 
   
         })
 
@@ -107,7 +107,7 @@ const EjercicioEdit = () => {
         console.log(formulari)
         console.log(JSON.stringify({ user_id,title,description,level,muscle_groups,video_url,miniature }))
         // Enviam dades a l'aPI i recollim resultat
-        fetch ("http://127.0.0.1:8000/api/exercises/"+id,{
+        fetch ("http://equip01.insjoaquimmir.cat/api/exercises/"+id,{
             headers: {
                 Accept: 'application/json',
                 //'Content-type': 'multipart/form-data',

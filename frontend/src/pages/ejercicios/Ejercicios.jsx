@@ -16,7 +16,7 @@ const Ejercicios = () => {
   // refresca canviarà el valor quan fem alguna operació com delete   
   useEffect(() => {
     console.log("HOLA")
-    fetch ("http://127.0.0.1:8000/api/exercises",{
+    fetch ("http://equip01.insjoaquimmir.cat/api/exercises",{
          headers: {
           'Accept': 'application/json',
           "Content-Type": "application/json",
@@ -36,11 +36,15 @@ const Ejercicios = () => {
   return (
    <>
     <div className="rutinas">
-      { ejercicios.map( (v,i)=> { return (
-        <>
-        {  <Ejercicio  setRefresca={ setRefresca } key={v.id} v={v}/>  }   
-        </>
-      )})}
+      {ejercicios && ejercicios.length > 0 ? (
+        ejercicios.map( (v,i)=> { return (
+          <>
+            {  <Ejercicio  setRefresca={ setRefresca } key={v.id} v={v}/>  }   
+          </>
+        )})
+      ):(
+        <p>No hay ejercicios disponibles</p>
+      )}
     </div>
     <Link to="/ejercicios/add"><div className="circulo suma"><HiPlus/></div></Link>
 </>

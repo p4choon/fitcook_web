@@ -26,7 +26,7 @@ const RutinasEdit = () => {
       });
 
     // Obtener la rutina existente de la API
-    fetch( "http://127.0.0.1:8000/api/routines/" + id)
+    fetch( "http://equip01.insjoaquimmir.cat/api/routines/" + id)
       .then((response) => response.json())
       .then((data) => {
         setFormData(data.routine);

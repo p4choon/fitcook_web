@@ -52,7 +52,7 @@ const EjerciciosAdd = ({ setAfegir }) => {
     console.log(formulari)
     console.log(JSON.stringify({ user_id,title,description,level,muscle_groups,video_url,miniature }))
     // Enviam dades a l'aPI i recollim resultat
-    fetch ("http://127.0.0.1:8000/api/exercises",{
+    fetch ("http://equip01.insjoaquimmir.cat/api/exercises",{
         headers: {
             Accept: 'application/json',
             //'Content-type': 'multipart/form-data',
